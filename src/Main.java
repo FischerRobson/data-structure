@@ -5,6 +5,12 @@ public class Main {
         linkedList.append(6);
         linkedList.append(9);
 
+        linkedList.prepend(8);
+        //linkedList.removeFirst();
+        //linkedList.removeLast();
+
+        System.out.println(linkedList.get(1).value);
+
         linkedList.printList();
     }
 }
