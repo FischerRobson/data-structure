@@ -11,6 +11,8 @@ public class Main {
 
         System.out.println(linkedList.get(1).value);
 
+        linkedList.set(0, 9);
+
         linkedList.printList();
     }
 }
