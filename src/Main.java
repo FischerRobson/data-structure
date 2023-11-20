@@ -9,10 +9,15 @@ public class Main {
         //linkedList.removeFirst();
         //linkedList.removeLast();
 
-        System.out.println(linkedList.get(1).value);
+        linkedList.insert(2, 8);
 
-        linkedList.set(0, 9);
+        linkedList.set(0, 7);
 
+        linkedList.remove(4);
+
+        linkedList.printList();
+
+        linkedList.reverse();
         linkedList.printList();
     }
 }
