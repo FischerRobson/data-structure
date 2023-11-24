@@ -1,23 +1,31 @@
 public class Main {
     public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList(4);
-        linkedList.append(3);
-        linkedList.append(6);
-        linkedList.append(9);
+        DoublyLinkedList dll = new DoublyLinkedList(1);
 
-        linkedList.prepend(8);
-        //linkedList.removeFirst();
-        //linkedList.removeLast();
+        dll.append(7);
+        dll.append(5);
+        dll.append(10);
+        dll.append(1);
 
-        linkedList.insert(2, 8);
 
-        linkedList.set(0, 7);
+        dll.removeLast();
 
-        linkedList.remove(4);
+        dll.prepend(9);
+        dll.prepend(2);
 
-        linkedList.printList();
+//        dll.removeFirst();
+//        dll.removeFirst();
 
-        linkedList.reverse();
-        linkedList.printList();
+        dll.printList();
+
+        dll.remove(2);
+
+        dll.printList();
+
+//        dll.set(3, 10);
+//
+//        dll.printList();
+
+//        System.out.println(dll.get(4).value);
     }
 }
