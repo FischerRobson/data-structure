@@ -1,11 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        Queue queue = new Queue(1);
+        Tree tree = new Tree();
 
-        queue.enqueue(2);
-        queue.enqueue(5);
-        queue.dequeue();
+        tree.insert(5);
+        tree.insert(12);
+        tree.insert(15);
+        tree.insert(90);
+        tree.insert(42);
+        tree.insert(8);
 
-        queue.printQueue();
+        tree.printTree();
     }
 }
