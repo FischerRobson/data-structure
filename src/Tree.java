@@ -48,7 +48,18 @@ public class Tree {
     }
 
     public boolean contains(int value) {
-        if (this.root == null) return false;
+        Node temp = this.root;
+
+        while (temp != null) {
+            if (value < temp.value) {
+                temp = temp.left;
+            } else if (value > temp.value){
+                temp = temp.right;
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
