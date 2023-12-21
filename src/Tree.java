@@ -62,4 +62,17 @@ public class Tree {
         return false;
     }
 
+    public int getHeight() {
+        return this.getHeight(this.root) - 1;
+    }
+
+    private int getHeight(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftHeight = this.getHeight(node.left);
+        int rightHeight = this.getHeight(node.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 }
