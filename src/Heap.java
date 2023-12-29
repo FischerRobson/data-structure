@@ -30,6 +30,29 @@ public class Heap {
         this.heap.set(index2, temp);
     }
 
+    private void sinkDown(int index) {
+        int maxIndex = index;
+
+        while (true) {
+            int leftIndex = this.leftChild(index);
+            int rightIndex = this.rightChild(index);
+
+            if (leftIndex < this.heap.size() && this.heap.get(leftIndex) > this.heap.get(maxIndex)) {
+                maxIndex = leftIndex;
+            }
+
+            if (rightIndex < this.heap.size() && this.heap.get(rightIndex) >  this.heap.get(maxIndex)) {
+                maxIndex = rightIndex;
+            }
+
+            if (index != maxIndex) {
+                swap(index, maxIndex);
+                index = maxIndex;
+            } else return;
+        }
+
+    }
+
     public void insert(int value) {
         this.heap.add(value);
         int index = this.heap.size() - 1;
@@ -38,6 +61,20 @@ public class Heap {
            this.swap(index, parent(index));
            index = parent(index);
         }
+    }
+
+    public Integer remove() {
+        if (this.heap.isEmpty()) return null;
+        if (this.heap.size() == 1) return this.heap.remove(0);
+
+        int maxValue = this.heap.get(0);
+        int lastValue = this.heap.remove(this.heap.size() - 1);
+
+        this.heap.set(0, lastValue);
+
+        sinkDown(0);
+
+        return maxValue;
     }
 
 }
