@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 // Binary Search Tree
 public class Tree {
     private Node root;
@@ -138,5 +142,55 @@ public class Tree {
         int rightHeight = this.getHeight(node.right);
 
         return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    // Tree Traversal
+
+    public ArrayList<Integer> BFS() {
+        Node currentNode = this.root;
+        Queue<Node> queue = new LinkedList<>();
+        ArrayList<Integer> results = new ArrayList<>();
+
+        queue.add(currentNode);
+        while (!queue.isEmpty()) {
+            currentNode = queue.remove();
+            results.add(currentNode.value);
+            if (currentNode.left != null) queue.add(currentNode.left);
+            if (currentNode.right != null) queue.add(currentNode.right);
+        }
+        return results;
+    }
+
+
+    // runs down to left
+    // Every time new Traverse is called its go to call stack
+    // So the root right node will be only add in stack after all
+    // deep in left node was iterated.
+    public ArrayList<Integer> DFSPreOrder() {
+        ArrayList<Integer> results = new ArrayList<>();
+
+        class Traverse {
+            Traverse(Node currentNode) {
+                results.add(currentNode.value);
+                if (currentNode.left != null) new Traverse(currentNode.left);
+                if (currentNode.right != null) new Traverse(currentNode.right);
+            }
+        }
+        new Traverse(this.root);
+        return results;
+    }
+
+    public ArrayList<Integer> DFSPostOrder() {
+        ArrayList<Integer> results = new ArrayList<>();
+
+        class Traverse {
+            Traverse(Node currentNode) {
+                if (currentNode.left != null) new Traverse(currentNode.left);
+                if (currentNode.right != null) new Traverse(currentNode.right);
+                results.add(currentNode.value);
+            }
+        }
+        new Traverse(this.root);
+        return results;
     }
 }
