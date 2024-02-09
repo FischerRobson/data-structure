@@ -1,20 +1,18 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        Tree tree = new Tree();
+        int[] array = {4, 2, 6, 5, 1, 3};
+        int[] array2 = Arrays.copyOf(array, array.length);
+        int[] array3 = Arrays.copyOf(array, array.length);
 
-        tree.insert(47);
-        tree.insert(21);
-        tree.insert(77);
-        tree.insert(18);
-        tree.insert(27);
-        tree.insert(52);
-        tree.insert(82);
+        Sort.bubbleSort(array);
+        Sort.selectionSort(array2);
+        Sort.insertionSort(array3);
 
-        tree.printTree();
-
-        System.out.println("Breadth-First Search: " + tree.BFS());
-        System.out.println("Deep First Search Pre Order: " + tree.DFSPreOrder());
-        System.out.println("Deep First Search Post Order: " + tree.DFSPostOrder());
-        System.out.println("Deep First Search In Order: " + tree.DFSInOrder());
+        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array2));
+        System.out.println(Arrays.toString(array3));
     }
 }
