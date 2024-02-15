@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Sort {
 
     public static void bubbleSort(int[] array) {
@@ -73,4 +75,39 @@ public class Sort {
         return combined;
     }
 
+    public static int[] mergeSort(int[] array) {
+        if (array.length == 1) return array;
+
+        int midIndex = array.length / 2;
+        int[] left = mergeSort(Arrays.copyOfRange(array, 0, midIndex));
+        int[] right = mergeSort(Arrays.copyOfRange(array, midIndex, array.length));
+
+        return mergeSort(left, right);
+    }
+
+    public static void swap(int[] array, int fistIndex, int secondIndex) {
+        int temp = array[fistIndex];
+        array[fistIndex] = array[secondIndex];
+        array[secondIndex] = temp;
+    }
+
+    public static int pivot(int[] array, int pivotIndex, int endIndex) {
+        int swapIndex = pivotIndex;
+        for (int i = pivotIndex; i < endIndex; i++) {
+            if (array[i] < array[pivotIndex]) {
+                swapIndex++;
+                swap(array, swapIndex, i);
+            }
+        }
+        swap(array, pivotIndex, swapIndex);
+        return swapIndex;
+    }
+
+    public static void quickSort(int[] array, int left, int right) {
+        if (left < right) {
+            int pivotIndex = pivot(array, left, right);
+            quickSort(array, left, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, right);
+        }
+    }
 }
