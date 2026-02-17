@@ -168,27 +168,27 @@ public class Tree {
 
     public ArrayList<Integer> inorder() {
         ArrayList<Integer> results = new ArrayList<>();
-        preorderRecursive(this.root, results);
+        inorderRecursive(this.root, results);
         return results;
     }
 
     private void inorderRecursive(Node node, ArrayList<Integer> results) {
         if(node == null) return;
-        preorderRecursive(node.left, results);
+        inorderRecursive(node.left, results);
         results.add(node.value);
-        preorderRecursive(node.right, results);
+        inorderRecursive(node.right, results);
     }
 
     public ArrayList<Integer> postorder() {
         ArrayList<Integer> results = new ArrayList<>();
-        preorderRecursive(this.root, results);
+        postorderRecursive(this.root, results);
         return results;
     }
 
     private void postorderRecursive(Node node, ArrayList<Integer> results) {
         if(node == null) return;
-        preorderRecursive(node.left, results);
-        preorderRecursive(node.right, results);
+        postorderRecursive(node.left, results);
+        postorderRecursive(node.right, results);
         results.add(node.value);
     }
     
