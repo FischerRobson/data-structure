@@ -83,17 +83,25 @@ public class Tree {
 
     public void recursiveInsert(int value) {
         if (this.root == null) this.root = new Node(value);
-        recursiveInsert(this.root, value);
+        else recursiveInsert(this.root, value);
     }
 
-    private Node recursiveInsert(Node currentNode, int value) {
-        if (currentNode == null) return new Node(value);
-        if(value < currentNode.value) {
-            currentNode.left = recursiveInsert(currentNode.left, value);
-        } else if (value > currentNode.value) {
-            currentNode.right = recursiveInsert(currentNode.right, value);
-        }
-        return currentNode;
+    private void recursiveInsert(Node currentNode, int value) {
+       if(currentNode.value == value) return;
+
+       if(value < currentNode.value) {
+           if(currentNode.left == null) {
+                currentNode.left = new Node(value);   
+           } else {
+               recursiveInsert(currentNode.left, value);
+           }
+       } else {
+           if(currentNode.right == null) {
+                currentNode.right = new Node(value);   
+           } else {
+               recursiveInsert(currentNode.right, value);
+           }
+       }
     }
 
     private int findSmallerValue(Node currentNode) {
