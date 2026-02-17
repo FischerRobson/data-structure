@@ -153,7 +153,45 @@ public class Tree {
     }
 
     // Tree Traversal
+    public ArrayList<Integer> preorder() {
+        ArrayList<Integer> results = new ArrayList<>();
+        preorderRecursive(this.root, results);
+        return results;
+    }
 
+    private void preorderRecursive(Node node, ArrayList<Integer> results) {
+        if(node == null) return;
+        results.add(node.value);
+        preorderRecursive(node.left, results);
+        preorderRecursive(node.right, results);
+    }
+
+    public ArrayList<Integer> inorder() {
+        ArrayList<Integer> results = new ArrayList<>();
+        preorderRecursive(this.root, results);
+        return results;
+    }
+
+    private void inorderRecursive(Node node, ArrayList<Integer> results) {
+        if(node == null) return;
+        preorderRecursive(node.left, results);
+        results.add(node.value);
+        preorderRecursive(node.right, results);
+    }
+
+    public ArrayList<Integer> postorder() {
+        ArrayList<Integer> results = new ArrayList<>();
+        preorderRecursive(this.root, results);
+        return results;
+    }
+
+    private void postorderRecursive(Node node, ArrayList<Integer> results) {
+        if(node == null) return;
+        preorderRecursive(node.left, results);
+        preorderRecursive(node.right, results);
+        results.add(node.value);
+    }
+    
     public ArrayList<Integer> BFS() {
         Node currentNode = this.root;
         Queue<Node> queue = new LinkedList<>();
